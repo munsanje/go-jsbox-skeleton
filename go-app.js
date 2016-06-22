@@ -15,7 +15,7 @@ go.app = function() {
 
         // `App` is the base class that needs to be extended and given app-specific
         // logic by adding the different states that the user will visit.
-        var SimpleApp = App.extend(function(self) {
+  var SimpleApp = App.extend(function(self) {
             // Set the app up to start at the state with the name 'states:start'
             App.call(self, 'states:start');
 
@@ -66,10 +66,10 @@ go.app = function() {
                 text: 'I fucking love you, Shandukani.'
             });
         });
-
-        return {
-            SimpleApp: SimpleApp
-        };
+    });
+    return {
+        SimpleApp: SimpleApp
+    };
 }();
 
 go.init = function() {

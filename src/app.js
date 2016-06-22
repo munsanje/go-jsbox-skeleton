@@ -8,9 +8,9 @@ go.app = function() {
 
         // `App` is the base class that needs to be extended and given app-specific
         // logic by adding the different states that the user will visit.
-        var SimpleApp = App.extend(function(self) {
+    var SimpleApp = App.extend(function(self) {
             // Set the app up to start at the state with the name 'states:start'
-            App.call(self, 'states:start');
+        App.call(self, 'states:start');
 
             // Add the start state. We create a `ChoiceState`, which asks the user a
             // question, along with a list of choices they can choose from. We then
@@ -31,16 +31,12 @@ go.app = function() {
                     }
                 });
             });*/
-          self.states.add('states:start', function(name) {
-            return {};
-
-          })
 
 
           self.states.add('states:start', function(name) {
               return new EndState(name, {
                   text: 'I fucking love you, Shandukani.'
-                        
+
                   }
               });
           });
@@ -68,9 +64,9 @@ go.app = function() {
             });
         });*/
 
-        return {
-            SimpleApp: SimpleApp
-        };
+    return {
+        SimpleApp: SimpleApp
+    };
 }();
 
 // connect the app to the api (api is only defined inside the real sandbox)
