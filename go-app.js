@@ -22,7 +22,7 @@ go.app = function() {
             // Add the start state. We create a `ChoiceState`, which asks the user a
             // question, along with a list of choices they can choose from. We then
             // determine which state to go to next based on their choice.
-          /*  self.states.add('states:start', function(name) {
+            self.states.add('states:start', function(name) {
                 return new ChoiceState(name, {
                     question: 'Tea or coffee?',
 
@@ -59,11 +59,6 @@ go.app = function() {
                     text: 'Cool :) Bye.',
                     next: 'states:start'
                 });
-            });
-        });*/
-        self.states.add('states:start', function(name){
-            return new EndState(name, {
-                text: 'I fucking love you, Shandukani.'
             });
         });
     });
