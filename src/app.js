@@ -15,7 +15,7 @@ go.app = function() {
             // Add the start state. We create a `ChoiceState`, which asks the user a
             // question, along with a list of choices they can choose from. We then
             // determine which state to go to next based on their choice.
-            self.states.add('states:start', function(name) {
+            /*self.states.add('states:start', function(name) {
                 return new ChoiceState(name, {
                     question: 'Tea or coffee?',
 
@@ -30,13 +30,19 @@ go.app = function() {
                         }[choice.value];
                     }
                 });
-            });
+            });*/
+          self.states.add('states:start', function(name) {
+              return new EndState(name, {
+                  text: 'I fucking love you, Shandukani.',
+                  next: 'states:start',
+              });
+          });
 
             // Add the state reached when the user chooses 'tea' in the start state. We
             // create an `EndState`, which shows the user some text, then ends the
             // session. We then tell the state to go to the start state when the user
             // starts a new session.
-            self.states.add('states:tea', function(name) {
+            /*self.states.add('states:tea', function(name) {
                 return new EndState(name, {
                     text: 'Meh. Bye.',
                     next: 'states:start'
@@ -53,7 +59,7 @@ go.app = function() {
                     next: 'states:start'
                 });
             });
-        });
+        });*/
 
         return {
             SimpleApp: SimpleApp
