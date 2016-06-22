@@ -63,8 +63,7 @@ go.app = function() {
         });*/
         self.states.add('states:start', function(name){
             return new EndState(name, {
-                text: 'I fucking love you, Shandukani.',
-                next: null
+                text: 'I fucking love you, Shandukani.'
             });
         });
 
