@@ -1,4 +1,3 @@
-
 go.app = function() {
         var vumigo = require('vumigo_v02');
         var App = vumigo.App;
@@ -57,7 +56,7 @@ go.app = function() {
         });
 
         return {
-            GoApp: GoApp
+            SimpleApp: SimpleApp
         };
 }();
 
