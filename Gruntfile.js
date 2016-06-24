@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -7,12 +7,13 @@ module.exports = function (grunt) {
     grunt.initConfig({
         paths: {
             src: {
-                app: [
-                    'src/app.js'
-                ],
-                prd: [
+                app: {
+                    witbot: 'src/witbot.js'
+                },
+                witbot: [
                     'src/index.js',
-                    '<%= paths.src.app %>',
+                    'src/utils.js',
+                    '<%= paths.src.app.witbot %>',
                     'src/init.js'
                 ],
                 all: [
@@ -20,70 +21,56 @@ module.exports = function (grunt) {
                 ]
             },
             dest: {
-                prd: 'go-app.js'
+                witbot: 'go-app-witbot.js'
             },
-            test: [
-                'test/setup.js',
-                '<%= paths.src.app %>',
-                'test/**/*.test.js'
-            ]
+            // test: {
+            //     witbot: [
+            //         'test/setup.js',
+            //         'src/utils.js',
+            //         '<%= paths.src.app.witbot %>',
+            //         'test/witbot.test.js'
+            //     ]
+            // }
         },
-
         jshint: {
             options: {jshintrc: '.jshintrc'},
             all: [
                 'Gruntfile.js',
-                '<%= paths.src.all %>',
-                '<%= paths.test %>'
+                '<%= paths.src.all %>'
             ]
         },
 
         watch: {
             src: {
-                files: [
-                    '<%= paths.src.all %>',
-                    '<%= paths.test %>'
-                ],
-                tasks: ['default'],
-                options: {
-                    atBegin: true
-                }
+                files: ['<%= paths.src.all %>'],
+                tasks: ['build']
             }
         },
 
         concat: {
-            options: {
-                banner: [
-                    '// WARNING: This is a generated file.',
-                    '//          If you edit it you will be sad.',
-                    '//          Edit src/app.js instead.',
-                    '\n' // Newline between banner and content.
-                ].join('\n')
-            },
-            prd: {
-                src: ['<%= paths.src.prd %>'],
-                dest: '<%= paths.dest.prd %>'
+            witbot: {
+                src: ['<%= paths.src.witbot %>'],
+                dest: '<%= paths.dest.witbot %>'
             }
         },
-
-        mochaTest: {
-            test: {
-                src: ['<%= paths.test %>'],
-                options: {
-                    reporter: 'spec'
-                }
-            }
-        }
+        // mochaTest: {
+        //     options: {
+        //         reporter: 'spec'
+        //     },
+        //     test_browser: {
+        //         src: ['<%= paths.test.witbot %>']
+        //     }
+        // }
     });
 
-    grunt.registerTask('test', [
-        'jshint',
-        'build',
-        'mochaTest'
-    ]);
+    // grunt.registerTask('test', [
+    //     'jshint',
+    //     'build',
+    //     'mochaTest'
+    // ]);
 
     grunt.registerTask('build', [
-        'concat',
+        'concat'
     ]);
 
     grunt.registerTask('default', [
